@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adil Farooqi — Portfolio</title>
+  <meta name="description" content="Adil Farooqi — 3rd CSE student from Malnad College of Engineering. Projects, certificates and contact."/>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --max-width:1000px;
+      --radius:12px;
+      --fw-regular: 400;
+      --fw-semibold: 600;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1000px 400px at 10% 10%, rgba(110,231,183,0.06), transparent),
+                  linear-gradient(180deg,#071024 0%, #071426 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:20px;
+      min-height:100vh;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:22px;
+    }
+
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:72px;
+      height:72px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),#60a5fa);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#07202a;
+      font-size:24px;
+      flex-shrink:0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6), inset 0 -6px 20px rgba(255,255,255,0.03);
+    }
+    .title{
+      line-height:1;
+    }
+    .title h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+    .title p{margin:2px 0 0 0; color:var(--muted); font-size:13px}
+
+    .actions{display:flex; gap:10px; align-items:center;}
+    .btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--accent);
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:13px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:20px;
+    }
+    @media (max-width:920px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+
+    /* Main card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .hero{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .hero .name{
+      font-size:18px;
+      margin:0 0 6px 0;
+    }
+    .hero .summary{ color:var(--muted); margin:0; font-size:14px }
+
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    h2{
+      margin:0;
+      font-size:16px;
+    }
+    p.small{margin:0; color:var(--muted); font-size:13px}
+
+    /* About + project list */
+    .about{ margin-bottom:18px; color:var(--muted); font-size:14px; }
+    .project{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding:14px;
+      border-radius:10px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .project .meta{display:flex; gap:8px; align-items:center; color:var(--muted); font-size:13px}
+    .badges{display:flex; gap:8px; flex-wrap:wrap}
+    .badge{
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      background:var(--glass-2);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .project a.link{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    /* Sidebar */
+    .sidebar .card{ padding:16px; position:sticky; top:24px; }
+    .cert-list{display:flex;flex-direction:column;gap:10px}
+    .cert{
+      padding:10px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:8px 10px;border-radius:8px;background:var(--glass-2);font-size:13px;color:var(--muted)}
+
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+
+    /* Contact form */
+    .contact input,.contact textarea{
+      width:100%;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      padding:10px;
+      color:inherit;
+      border-radius:8px;
+      font-size:14px;
+      resize:vertical;
+    }
+    .contact label{font-size:13px;color:var(--muted); margin-bottom:6px; display:block}
+    .contact .send{ margin-top:8px; display:inline-block; background:var(--accent); color:#07202a; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; border:none; cursor:pointer;}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .stack{display:flex;gap:8px;flex-wrap:wrap}
+    .tiny{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="brand" aria-hidden="false">
+        <div class="avatar" aria-hidden="true">AF</div>
+        <div class="title">
+          <h1>Adil Farooqi</h1>
+          <p>3rd CSE student — Malnad College of Engineering</p>
+        </div>
+      </div>
+
+      <div class="actions" aria-hidden="false">
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- Main column -->
+      <main>
+        <section class="card hero" aria-labelledby="intro">
+          <div style="flex:1">
+            <h2 id="intro" class="name">Hello — I'm Adil</h2>
+            <p class="summary">3rd year Computer Science & Engineering student at Malnad College of Engineering. Passionate about building web and AI-assisted applications, learning systems design, and collaborating on impactful projects.</p>
+          </div>
+          <div style="text-align:right;min-width:140px">
+            <p class="tiny">Location</p>
+            <strong>Hassan, Karnataka, India</strong>
+            <p style="margin-top:8px" class="tiny">Availability</p>
+            <span class="badge">Open to internships</span>
+          </div>
+        </section>
+
+        <section class="card" id="about" aria-labelledby="about-title" style="margin-top:18px;">
+          <div class="section-title">
+            <h2 id="about-title">About Me</h2>
+            <span class="tiny">Student • Learner • Builder</span>
+          </div>
+          <div class="about">
+            <p>
+              I am a 3rd year CSE student at Malnad College of Engineering. I enjoy solving problems with code, learning new technologies, and creating small systems that help automate repetitive tasks. I focus on web development, data structures, and introductory machine learning.
+            </p>
+            <p style="margin-top:8px" class="muted">
+              Current focus: Full-stack web projects, understanding algorithms deeply, and contributing to college-level tech activities.
+            </p>
+          </div>
+
+          <div style="margin-top:12px;">
+            <div class="section-title">
+              <h2>Highlighted Project</h2>
+              <span class="tiny">Demo & details</span>
+            </div>
+
+            <article class="project" aria-labelledby="proj-1">
+              <div>
+                <h3 id="proj-1" style="margin:0">CampusConnect — Mini Social Platform (Sample Project)</h3>
+                <div class="meta" style="margin-top:6px">
+                  <span class="tiny">Web • Node.js • Express • MongoDB • React</span>
+                </div>
+              </div>
+
+              <p style="margin:8px 0 0 0; color:var(--muted); font-size:14px;">
+                CampusConnect is a lightweight social platform prototype for college students to post updates, join groups and share resources. Built as a full-stack proof-of-concept:
+              </p>
+
+              <ul class="tiny" style="margin:8px 0 0 16px; color:var(--muted)">
+                <li>Authentication (email + password), user profiles and role-based posts.</li>
+                <li>Group creation, post comments, and simple search by tags.</li>
+                <li>REST API with Express; React frontend with responsive layout; MongoDB for storage.</li>
+              </ul>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
+                <div class="badges">
+                  <span class="badge">MERN</span>
+                  <span class="badge">Auth</span>
+                  <span class="badge">Responsive</span>
+                </div>
+                <div>
+                  <a class="link" href="#" onclick="alert('Replace with your project link or GitHub repo.'); return false;">View repository →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div style="margin-top:18px;">
+            <div class="section-title">
+              <h2>Other Projects</h2>
+              <span class="tiny">small demos & coursework</span>
+            </div>
+
+            <div style="display:grid;gap:10px;">
+              <div class="project" style="padding:12px;">
+                <strong>Smart Attendance (Mini)</strong>
+                <div class="meta" style="margin-top:6px">Face detection + local DB • Python • OpenCV</div>
+                <p class="muted tiny" style="margin-top:6px">A classroom attendance tool using face detection and local CSV logging for quick demos and learning OpenCV workflows.</p>
+              </div>
+
+              <div class="project" style="padding:12px;">
+                <strong>Algorithm Visualizer</strong>
+                <div class="meta" style="margin-top:6px">JavaScript • D3.js</div>
+                <p class="muted tiny" style="margin-top:6px">Interactive visualizer to demonstrate sorting and pathfinding algorithms for classmates and presentations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="contact" style="margin-top:18px;">
+          <div class="section-title">
+            <h2>Contact</h2>
+            <span class="tiny">Let's connect</span>
+          </div>
+
+          <p class="muted">Feel free to reach out for internships, collaborations, or project discussions.</p>
+
+          <form class="contact" onsubmit="event.preventDefault(); alert('This is a demo contact form. Replace with real backend or mailto link.');">
+            <label for="name">Your name</label>
+            <input id="name" placeholder="e.g., Priya" required />
+
+            <label for="email" style="margin-top:8px">Email</label>
+            <input id="email" type="email" placeholder="you@domain.com" required />
+
+            <label for="message" style="margin-top:8px">Message</label>
+            <textarea id="message" rows="4" placeholder="Hi Adil — I want to discuss..."></textarea>
+
+            <button class="send" type="submit">Send message</button>
+          </form>
+        </section>
+
+        <footer>
+          <div class="tiny">Made with ❤ — Adil Farooqi • 3rd CSE, Malnad College of Engineering</div>
+        </footer>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="card">
+          <div class="section-title">
+            <h2>Certificates</h2>
+            <span class="tiny">Achievements</span>
+          </div>
+
+          <div class="cert-list" role="list">
+            <div class="cert" role="listitem">
+              <strong>NPTEL — Social Network</strong>
+              <div class="tiny" style="margin-top:6px">Score: <strong>53</strong> • Certificate: <span class="muted">Verified</span></div>
+            </div>
+
+            <div class="cert" role="listitem">
+              <strong>Coursera — Web Development Basics</strong>
+              <div class="tiny" style="margin-top:6px">Intro web technologies, HTML/CSS/JS • Certificate: <span class="muted">Issued</span></div>
+            </div>
+
+            <div class="cert" role="listitem">
+              <strong>College Workshop — Git & GitHub</strong>
+              <div class="tiny" style="margin-top:6px">Hands-on session for version control basics</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <div class="section-title" style="margin-bottom:8px">
+              <h2>Skills</h2>
+              <span class="tiny">stack</span>
+            </div>
+            <div class="skills" aria-hidden="false">
+              <div class="skill">HTML</div>
+              <div class="skill">CSS</div>
+              <div class="skill">JavaScript</div>
+              <div class="skill">React</div>
+              <div class="skill">Node.js</div>
+              <div class="skill">MongoDB</div>
+              <div class="skill">Python</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <div class="section-title">
+              <h2>Quick Info</h2>
+              <span class="tiny">contact</span>
+            </div>
+            <p class="tiny" style="margin:0 0 8px 0"><strong>Email:</strong> <span class="muted">adil.farooqi@example.com</span></p>
+            <p class="tiny" style="margin:0 0 8px 0"><strong>Phone:</strong> <span class="muted">+91-XXXXXXXXXX</span></p>
+            <a href="#" class="btn" onclick="alert('Replace with a real resume link or download.'); return false;">Download Resume</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Small script: update avatar initials if name changes later
+    (function(){
+      try{
+        var name = "Adil Farooqi";
+        var avatar = document.querySelector('.avatar');
+        if(avatar){
+          var parts = name.split(' ');
+          var initials = parts.map(p=>p[0]||'').slice(0,2).join('').toUpperCase();
+          avatar.textContent = initials || 'AF';
+        }
+      }catch(e){console.error(e)}
+    })();
+  </script>
+</body>
+                </html>
